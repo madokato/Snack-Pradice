@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { Login } from "../api/login";
+import { supabase } from "../supabase";
 
 const eMail = ref("");
 const passWord = ref("");
@@ -8,6 +9,8 @@ const loading = ref(false);
 const loginFail=ref("")
 
 async function login() {
+  const { data} = await supabase.auth.getUser()
+  console.log("bbbefore",data)
   loading.value = true;
   const response = await Login({
     eMail: eMail.value,
