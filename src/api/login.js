@@ -21,6 +21,7 @@ export const Login = async (val) => {
       password: val.passWord,
     });
     if (error) throw error;
+    console.log('login!')
   } catch (error) {
     if (error instanceof Error) {
       //   alert(error.message);
