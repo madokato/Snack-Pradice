@@ -5,8 +5,6 @@ import { useAuthStore } from "./stores/auth";
 import { watchEffect } from "vue";
 const auth = useAuthStore();
 
-// const { data} = await supabase.auth.getUser()
-// console.log(data)
 supabase.auth.onAuthStateChange((event, session) => {
   if (event == "SIGNED_IN") auth.setUser(session.user);
   if (event == "SIGNED_OUT") auth.clearUser();
@@ -16,14 +14,19 @@ watchEffect(async () => {
   const {
     data: { session },
   } = await supabase.auth.getSession();
-  console.log(session);
+
   const { user } = session;
 
   console.log(user);
 });
 
 async function logout() {
-  const { error } = await supabase.auth.signOut();
+  try {
+    const { error } = await supabase.auth.signOut();
+    if (error) throw error;
+  } catch (error) {
+    console.log(error);
+  }
 }
 </script>
 

@@ -29,9 +29,9 @@ export const Login = async (val) => {
     const { data} = await supabase.auth.getUser()
   console.log(data)
     if (error) throw error;
-    // router.push({
-    //   name: 'home',
-    // });
+    router.push({
+      name: 'home',
+    });
   return user
   } catch (error) {
     if (error instanceof Error) {
