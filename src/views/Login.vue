@@ -6,21 +6,19 @@ import { supabase } from "../supabase";
 const eMail = ref("");
 const passWord = ref("");
 const loading = ref(false);
-const loginFail=ref("")
+const loginFail = ref("");
 
 async function login() {
-  const { data} = await supabase.auth.getUser()
-  console.log("bbbefore",data)
   loading.value = true;
   const response = await Login({
     eMail: eMail.value,
     passWord: passWord.value,
   });
   if (response) {
-    loginFail.value="Check Email or Password"
+    loginFail.value = "Check Email or Password";
   }
-  loading.value=false
-  }
+  loading.value = false;
+}
 </script>
 
 <template>
@@ -44,8 +42,14 @@ async function login() {
           />
         </div>
         <div>
-            <div class="text-red-500 text-sm">{{ loginFail }}</div>
-            <RouterLink to="/SendEmail"><button><p class="text-xs underline decoration-1 ml-32">Forgot password?</p></button></RouterLink>
+          <div class="text-red-500 text-sm">{{ loginFail }}</div>
+          <RouterLink to="/SendEmail"
+            ><button>
+              <p class="text-xs underline decoration-1 ml-32">
+                Forgot password?
+              </p>
+            </button></RouterLink
+          >
           <input
             type="submit"
             class="bg-slate-300 text-white mt-2 w-56"
@@ -55,10 +59,9 @@ async function login() {
       </div>
     </form>
     <div class="text-center">
-        <RouterLink to="/CreateAccount"
-          ><button class="text-sm">Create New Account</button></RouterLink
-        >
+      <RouterLink to="/CreateAccount"
+        ><button class="text-sm">Create New Account</button></RouterLink
+      >
     </div>
-    
   </div>
 </template>

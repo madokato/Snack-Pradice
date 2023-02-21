@@ -9,7 +9,7 @@ export const GetItem = async () => {
 
 export const GetCartItem = async () => {
   const { data } = await supabase.from("cart").select("*,itemId(*)").eq('delete',false);
-  // console.log(data)
+  console.log(data)
 
   return data;
 };

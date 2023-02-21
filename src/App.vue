@@ -17,7 +17,7 @@ watchEffect(async () => {
 
   const { user } = session;
 
-  console.log(user);
+  // console.log(user);
 });
 
 async function logout() {

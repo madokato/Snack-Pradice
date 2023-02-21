@@ -2,8 +2,6 @@ import { supabase } from "../supabase";
 import router from "@/router";
 
 export const CreateAccount = async (val) => {
-  console.log(val);
-  //   await supabase.from("users").insert(val);
 
   const { user,session,data, error } = await supabase.auth.signUp({
     email: val.eMail,
@@ -19,8 +17,7 @@ export const CreateAccount = async (val) => {
 
 
 export const Login = async (val) => {
-  const { data} = await supabase.auth.getUser()
-  console.log("besfore",data)
+
   try {
     const { error,user } = await supabase.auth.signInWithPassword({
       email: val.eMail,
