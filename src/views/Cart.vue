@@ -4,7 +4,7 @@ import { DeleteItem } from "../api/postItem";
 import SnackQuantity from "../components/SnackQuantity.vue";
 import { ref, reactive, computed } from "vue";
 import router from "@/router";
-import { getItemAsync } from "@supabase/gotrue-js/dist/module/lib/helpers";
+
 
 const carts = ref([]);
 
