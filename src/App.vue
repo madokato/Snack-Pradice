@@ -4,7 +4,6 @@ import { supabase } from "./supabase";
 import { useAuthStore } from "./stores/auth";
 import { watchEffect } from "vue";
 const auth = useAuthStore();
-// async()=>{console.log(await supabase.auth.getUser())}
 
 // const { data} = await supabase.auth.getUser()
 // console.log(data)
@@ -13,13 +12,15 @@ supabase.auth.onAuthStateChange((event, session) => {
   if (event == "SIGNED_OUT") auth.clearUser();
 });
 
-// watchEffect(async () => {
-//   const { data, error } = await supabase.auth.refreshSession();
-//   const { session, user } = data;
-//   console.log("app",user);
-//   console.log("app",user);
-// });
+watchEffect(async () => {
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+  console.log(session);
+  const { user } = session;
 
+  console.log(user);
+});
 
 async function logout() {
   const { error } = await supabase.auth.signOut();
@@ -55,6 +56,7 @@ async function logout() {
         Hello {{ auth.user.user_metadata.name }}!!
       </p>
     </div>
+    <!-- <pre>{{ supabase.auth.user() }}</pre> -->
   </header>
 
   <RouterView />
