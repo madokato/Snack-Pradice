@@ -32,7 +32,7 @@ export const Login = async (val) => {
     // router.push({
     //   name: 'home',
     // });
-  
+  return user
   } catch (error) {
     if (error instanceof Error) {
       //   alert(error.message);
