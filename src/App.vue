@@ -11,6 +11,7 @@ supabase.auth.onAuthStateChange((event, session) => {
 });
 
 watchEffect(async () => {
+  console.log("getsesstion")
   const {
     data: { session },
   } = await supabase.auth.getSession();

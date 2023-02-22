@@ -1,6 +1,7 @@
 <script setup>
 import { GetCartItem } from "../api/getItem";
-import { DeleteItem } from "../api/postItem";
+import { DeleteItem ,PostPayment} from "../api/postItem";
+
 import SnackQuantity from "../components/SnackQuantity.vue";
 import { ref, reactive, computed } from "vue";
 import router from "@/router";
@@ -9,14 +10,17 @@ import router from "@/router";
 const carts = ref([]);
 
 const GetCart = async () => {
+  // console.log("getcart")
   carts.value = await GetCartItem();
 };
 GetCart();
 
+
+
 const ChangeQuantity = (val) => {
   const findItem = carts.value.find((item) => item.id === val.tourId);
-
   findItem.quantity = val.quantity;
+  // console.log(carts.value)
 };
 const caluculateTotal = computed(() => {
   return carts.value.reduce(
@@ -28,6 +32,12 @@ const caluculateTotal = computed(() => {
 async function deleteItem(id) {
   await DeleteItem(id);
   carts.value=carts.value.filter((item) => item.id !== id);
+}
+
+async function postCart(){
+// console.log("id",carts.value)
+
+await PostPayment(carts.value)
 }
 </script>
 
@@ -69,7 +79,7 @@ async function deleteItem(id) {
   </div>
 
   <div class="w-32 mx-auto m-10">
-    <router-link to="/payconfirm">
+    <router-link to="/payconfirm" @click="postCart">
       <button class="border-solid rounded-md bg-emerald-400 w-32 p-2">
         Check
       </button>

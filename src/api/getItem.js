@@ -8,8 +8,9 @@ export const GetItem = async () => {
 
 
 export const GetCartItem = async () => {
-  const { data } = await supabase.from("cart").select("*,itemId(*)").eq('delete',false);
-  console.log(data)
+  const { data:userId} = await supabase.auth.getUser()
+  const { data } = await supabase.from("cart").select("*,itemId(*)").eq('delete',false).eq('userId',userId.user.id);
+  // console.log("apicart")
 
   return data;
 };

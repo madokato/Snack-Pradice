@@ -16,8 +16,8 @@ const props = defineProps({
 // console.log(props.tourId)
 const emit = defineEmits(["eventEmit"]);
 const onChange = (e) => {
-  console.log("child", e.target.value, props.tourId);
-  emit("eventEmit", {quantity:e.target.value,tourId:props.tourId});
+  // console.log("child", Number(e.target.value), props.tourId);
+  emit("eventEmit", {quantity:Number(e.target.value),tourId:props.tourId});
 };
 </script>
 
