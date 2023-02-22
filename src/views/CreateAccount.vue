@@ -1,10 +1,11 @@
-<script setup>
+  <script setup>
 import { ref } from "vue";
 import { CreateAccount } from "../api/login";
 
 const name = ref("");
 const eMail = ref("");
 const passWord = ref("");
+const duplicate=ref();
 
 async function submit() {
 
@@ -13,7 +14,10 @@ async function submit() {
     eMail: eMail.value,
     passWord: passWord.value,
   };
-  await CreateAccount(newAccount);
+  const res=await CreateAccount(newAccount);
+
+ if(res==="duplicate")duplicate.value="This E-mail is alreday in use."
+
 }
 </script>
 
@@ -42,6 +46,7 @@ async function submit() {
           v-model="passWord"
         />
       </div>
+      <div v-if="duplicate" class="text-red-500">{{ duplicate }}</div>
       <div><button>Register</button></div>
     </form>
   </div>

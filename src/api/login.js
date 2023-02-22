@@ -2,16 +2,26 @@ import { supabase } from "../supabase";
 import router from "@/router";
 
 export const CreateAccount = async (val) => {
-
-  const { user,session,data, error } = await supabase.auth.signUp({
+console.log(val)
+try{
+  
+  const { data, error } = await supabase.auth.signUp({
     email: val.eMail,
     password: val.passWord,
-    // options: {
-    //   data: {
-    //     name: val.name,
-    //   },
-    // },
+    options: {
+      data: {
+        name: val.name,
+      },
+    },
   });
+  if(error)throw error
+  router.push({
+    name: 'home',
+  });
+}catch(error){
+console.log(error)
+return "duplicate"
+}
  
 };
 
@@ -25,7 +35,7 @@ export const Login = async (val) => {
     });
     const { data} = await supabase.auth.getUser()
 
-  console.log(data.user.id)
+
     if (error) throw error;
     router.push({
       name: 'home',
