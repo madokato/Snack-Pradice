@@ -33,7 +33,7 @@ async function deleteItem(id) {
 
 <template>
   <div class="text-4xl mt-4 text-center">Cart</div>
-  <div class="flex flex-wrap justify-center m-20">
+  <div class="flex flex-wrap justify-between ml-20 mr-20 mt-10">
     <div
       v-for="cart in carts"
       class="flex border-solid border-2 m-2 w-128 p-3"
@@ -69,8 +69,10 @@ async function deleteItem(id) {
   </div>
 
   <div class="w-32 mx-auto m-10">
-    <button class="border-solid rounded-md bg-emerald-400 w-32 p-2">
-      Check
-    </button>
+    <router-link to="/payconfirm">
+      <button class="border-solid rounded-md bg-emerald-400 w-32 p-2">
+        Check
+      </button>
+    </router-link>
   </div>
 </template>
