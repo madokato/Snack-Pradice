@@ -5,6 +5,7 @@ import { ref } from "vue";
 import router from "@/router";
 
 let Snacks = ref([]);
+let input=ref("")
 
 const GetSnacks = async () => {
   Snacks.value = await GetItem();
@@ -13,13 +14,30 @@ GetSnacks();
 
 async function addCart(val) {
   await PostCartItem(val);
-  
 }
 
-
+// function filterdList(){
+//   return Snacks.value.filter((snack)=>
+//   snack.includes(input.value)
+//   )
+// }
+async function filteredList() {
+  Snacks.value = await GetItem();
+  return  Snacks.value.filter((snack) =>
+    snack.toLowerCase().includes(input.value.toLowerCase())
+  )
+}
+console.log("snack",Snacks.value)
+// console.log(filteredList())
 </script>
 
 <template>
+<div class="w-1/6 mr-auto ml-auto mt-8">
+  <input type="text" v-model="input" placeholder="Search snacks" class="border-solid border-2 bg-white">
+
+</div>
+
+<!-- {{ filteredList() }} -->
   <div class="flex flex-wrap justify-center m-10">
     <div v-for="snack in Snacks" class="pr-10 pt-14">
       <div class="w-400 h-300">
