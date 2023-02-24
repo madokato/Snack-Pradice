@@ -1,6 +1,6 @@
 <script setup>
 import { GetCartItem } from "../api/getItem";
-import { DeleteItem ,PostPayment} from "../api/postItem";
+import { DeleteItem ,FinalCartItem} from "../api/postItem";
 
 import SnackQuantity from "../components/SnackQuantity.vue";
 import { ref, reactive, computed } from "vue";
@@ -37,7 +37,7 @@ async function deleteItem(id) {
 async function postCart(){
 // console.log("id",carts.value)
 
-await PostPayment(carts.value)
+await FinalCartItem(carts.value)
 }
 </script>
 

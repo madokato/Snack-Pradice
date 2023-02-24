@@ -13,7 +13,7 @@ GetSnacks();
 
 async function addCart(val) {
   await PostCartItem(val);
-  router.push("/cart")
+  
 }
 
 

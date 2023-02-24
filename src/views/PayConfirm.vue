@@ -1,6 +1,8 @@
 <script setup>
 import { GetCartItem } from "../api/getItem";
+import {Postpayment} from "../api/postItem"
 import { ref,computed } from "vue";
+
 const carts = ref([]);
 
 const GetCart = async () => {
@@ -15,6 +17,11 @@ const caluculateTotal = computed(() => {
     0
   );
 });
+
+async function ClickPayment(){
+await Postpayment(carts.value)
+}
+
 </script>
 
 <template>
@@ -42,5 +49,5 @@ const caluculateTotal = computed(() => {
   </div>
 
 </div>
-<div class="w-32 mx-auto mt-4"><button class="bg-slate-400 rounded-xl text-white p-2">CHECK</button></div>
+<div class="w-32 mx-auto mt-4" @click="ClickPayment"><button class="bg-slate-400 rounded-xl text-white p-2">CHECK</button></div>
 </template>
