@@ -32,16 +32,18 @@ await Postpayment(carts.value)
       class="w-1/2  ml-auto mr-auto"
       :key="cart.id"
     >
-    <p class="text-xl ">{{ cart.itemId.name }}</p>
-      <div class="flex  m-2 p-3">
+    <p class="text-xl text-center">{{ cart.itemId.name }}</p>
+      <div class="flex p-3">
           <div class="w-400 h-300 ml-10">
-            <div class="w-30"><img :src="cart.itemId.img" class="h-10 pr-10" /></div>
+            <div class="w-40"><img :src="cart.itemId.img" class="h-20" /></div>
               </div>
               <div>
-              <p>Quantity:{{ cart.quantity }}</p>
-            <p>Subtotal:${{ cart.itemId.price * cart.quantity }}</p>
-          
-          </div>
+                <span>
+                <p>Quantity:{{ cart.quantity }}</p>
+                            <p>Subtotal:${{ cart.itemId.price * cart.quantity }}</p>
+                          
+                          </span>
+              </div>
       </div>
     </div>
     <div class="text-2xl w-32 mx-auto text-center">
@@ -49,5 +51,5 @@ await Postpayment(carts.value)
   </div>
 
 </div>
-<div class="w-32 mx-auto mt-4" @click="ClickPayment"><button class="bg-slate-400 rounded-xl text-white p-2">CHECK</button></div>
+<div class="w-32 mx-auto mt-4" @click="ClickPayment"><button class="bg-slate-400 rounded-xl text-white p-2 w-32">CHECK</button></div>
 </template>

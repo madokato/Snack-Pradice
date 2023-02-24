@@ -8,10 +8,10 @@ const submit = ref("Send Mail");
 async function sendEmail() {
   console.log(mail.value)
   try {
-    const { error } = await supabase.auth.api.resetPasswordForEmail(
+    const { error } = await supabase.auth.resetPasswordForEmail(
       'maka7816@yahoo.co.jp',
       {
-        redirectTo: 'http:localhost:5173/SendEmail',
+        redirectTo: 'http://localhost:5173/ResetPassword',
       }
     );
     if (error) throw error;
@@ -22,8 +22,9 @@ async function sendEmail() {
 </script>
 
 <template>
-  <div class="w-64 text-center ml-auto mr-auto mt-12">
+  <div class="w-1/2 text-center ml-auto mr-auto mt-12">
     <div class="text-2xl mb-6 font-serif">Forgot Your Password?</div>
+    <div class="mb-10">Enter Your EMAIL ADDRESS TO RESET YOUR PASSWORD</div>
     <form action="" @submit.prevent="sendEmail">
       <div>
         <input

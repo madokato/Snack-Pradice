@@ -51,7 +51,7 @@ async function postCart() {
   </div>
   <div v-else>
     <div class="text-4xl mt-4 text-center">Cart</div>
-    <div class="flex flex-wrap justify-between ml-20 mr-20 mt-10">
+    <div class="flex flex-wrap justify-center ml-20 mr-20 mt-10">
       <div
         v-for="cart in carts"
         class="flex border-solid border-2 m-2 w-128 p-3"

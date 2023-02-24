@@ -1,9 +1,9 @@
 <script setup>
-// import SvgIcon from '@jamescoyle/vue-icon';
+
 </script>
 
 <template>
-  <!-- <svg-icon type="mdi" :path="path"></svg-icon> -->
+  
   <div class="w-1/2 ml-auto mr-auto mt-10">
       <div class="w-96 ml-auto mr-auto">
           <svg
