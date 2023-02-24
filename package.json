@@ -23,7 +23,10 @@
     "npm": "^9.5.0",
     "pinia": "^2.0.28",
     "vue": "^3.2.45",
-    "vue-router": "^4.1.6"
+    "vue-cool-select": "^3.5.2",
+    "vue-router": "^4.1.6",
+    "vue-simple-suggest": "^1.11.2",
+    "vue3-simple-typeahead": "^1.0.11"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
