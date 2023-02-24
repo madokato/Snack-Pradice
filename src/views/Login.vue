@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { Login } from "../api/login";
-import { supabase } from "../supabase";
+
 
 const eMail = ref("");
 const passWord = ref("");
